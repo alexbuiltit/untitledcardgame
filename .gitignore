@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+dist
+.firebase
+.next
+out
+.env
+database.rules.json
+firebase-debug-log
+.firebaserc
