@@ -1,6 +1,6 @@
 # Untitled card game
 
-I'm building a web app to help organise a European roadtrip in 2020.
+An untitled card game
 
 ## Stack
 
