@@ -8,7 +8,7 @@ type CardCost = {
   white?: number;
 };
 
-type CardProps = {
+export type CardProps = {
   cardID: string;
   colour?: string;
   value?: number;
