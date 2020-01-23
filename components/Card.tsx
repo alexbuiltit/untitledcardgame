@@ -10,7 +10,7 @@ type CardCost = {
 
 export type CardProps = {
   cardID: string;
-  colour?: string;
+  colour?: "red" | "blue" | "green" | "red" | "white";
   value?: number;
   cost?: CardCost;
 };
