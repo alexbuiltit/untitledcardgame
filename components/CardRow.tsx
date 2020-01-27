@@ -1,13 +1,26 @@
 import React, { FunctionComponent } from "react";
 import Card, { CardProps } from "./Card";
+import styled from "styled-components";
 
-type CardRowProps = {
+const CardRowStyled = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
+interface CardRowProps {
   cards: CardProps[];
-};
+}
 
 const CardRow: FunctionComponent<CardRowProps> = ({ cards }) => {
-  const IndividulCards = cards.map(card => <Card cardID={card.cardID} />);
-  return <div>{IndividulCards}</div>;
+  const IndividualCards = cards.map(card => (
+    <Card
+      key={card.cardID}
+      cardID={card.cardID}
+      cost={card.cost}
+      colour={card.colour}
+      value={card.value}
+    />
+  ));
+  return <CardRowStyled>{IndividualCards}</CardRowStyled>;
 };
 
-export default Card;
+export default CardRow;
