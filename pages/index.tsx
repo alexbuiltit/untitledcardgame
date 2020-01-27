@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 import { db } from "../fire";
-
+import Link from "next/link";
 interface GameConent {
   name?: string;
 }
@@ -34,6 +34,13 @@ const Home: NextPage<{ existingGames: Game[] }> = ({ existingGames }) => {
           );
         })}
       <button onClick={() => createGame("my new game")}>Add new game</button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <Link href="/exampleGame">
+        <a>View example game</a>
+      </Link>
     </div>
   );
 };
