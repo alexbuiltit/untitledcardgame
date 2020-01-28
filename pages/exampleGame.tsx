@@ -1,7 +1,7 @@
 import { ResourceCardRowComponent } from "../components/ResourceCardRowComponent";
 import { IResourceCard } from "../interfaces/IResourceCard";
 
-const CardContent: Array<IResourceCard> = [
+const CardContent: IResourceCard[] = [
   {
     key: "12345",
     id: "12345",

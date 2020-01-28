@@ -2,15 +2,10 @@ import React from "react";
 import { NextPage } from "next";
 import { db } from "../fire";
 import Link from "next/link";
-interface GameConent {
-  name?: string;
-}
-interface Game {
-  id?: string;
-  data?: GameConent;
-}
+import { IGame } from "../interfaces/IGame";
+import { IGameDetails } from "../interfaces/IGameDetails";
 
-const Home: NextPage<{ existingGames: Game[] }> = ({ existingGames }) => {
+const Home: NextPage<{ existingGames: IGame[] }> = ({ existingGames }) => {
   const dbRef = db.collection("games");
   const createGame = (name: string) => {
     dbRef
@@ -26,10 +21,10 @@ const Home: NextPage<{ existingGames: Game[] }> = ({ existingGames }) => {
   return (
     <div>
       {existingGames &&
-        existingGames.map((game: Game) => {
+        existingGames.map(game => {
           return (
             <div key={game.id}>
-              {game.id} - {game.data && game.data.name}
+              {game.id} - {game.details.name}
             </div>
           );
         })}
@@ -46,7 +41,7 @@ const Home: NextPage<{ existingGames: Game[] }> = ({ existingGames }) => {
 };
 
 Home.getInitialProps = async () => {
-  let existingGames: Game[];
+  let existingGames: IGame[];
   existingGames = [];
   await db
     .collection("games")
@@ -57,7 +52,7 @@ Home.getInitialProps = async () => {
         return;
       }
       snapshot.forEach(doc => {
-        existingGames.push({ id: doc.id, data: doc.data() });
+        existingGames.push({ id: doc.id, details: doc.data() as IGameDetails });
       });
     })
     .catch(err => {
