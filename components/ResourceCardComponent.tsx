@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "styled-components";
-import CardCostItem from "../components/CardCostItem";
+import { ResourceCardCostItem } from "./ResourceCardCostItem";
+import { IResourceCard } from "../interfaces/IResourceCard";
 
-const CardStyled = styled.div`
+const ResourceCardStyled = styled.div`
   border-radius: 8px;
   margin: 16px;
   padding: 16px;
@@ -16,49 +17,32 @@ const CostStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 `;
-type CardCost = {
-  green?: number;
-  blue?: number;
-  red?: number;
-  black?: number;
-  white?: number;
-};
 
-export interface CardProps {
-  key: string;
-  cardID: string;
-  colour?: string;
-  value?: number;
-  cost: CardCost;
-}
-
-const Card: FunctionComponent<CardProps> = ({
-  cardID,
+export const ResourceCardComponent: FunctionComponent<IResourceCard> = ({
+  id,
   colour,
   value,
   cost
 }) => (
-  <CardStyled>
+  <ResourceCardStyled>
     <p>{colour && colour}</p>
     <p>Value: {value}</p>
     <CostStyled>
       {cost.green !== undefined && cost.green > 0 && (
-        <CardCostItem colour="green" value={cost.green} />
+        <ResourceCardCostItem colour="green" value={cost.green} />
       )}
       {cost.blue !== undefined && cost.blue > 0 && (
-        <CardCostItem colour="blue" value={cost.blue} />
+        <ResourceCardCostItem colour="blue" value={cost.blue} />
       )}
       {cost.red !== undefined && cost.red > 0 && (
-        <CardCostItem colour="red" value={cost.red} />
+        <ResourceCardCostItem colour="red" value={cost.red} />
       )}
       {cost.black !== undefined && cost.black > 0 && (
-        <CardCostItem colour="black" value={cost.black} />
+        <ResourceCardCostItem colour="black" value={cost.black} />
       )}
       {cost.white !== undefined && cost.white > 0 && (
-        <CardCostItem colour="white" value={cost.white} />
+        <ResourceCardCostItem colour="white" value={cost.white} />
       )}
     </CostStyled>
-  </CardStyled>
+  </ResourceCardStyled>
 );
-
-export default Card;

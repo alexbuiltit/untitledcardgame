@@ -1,9 +1,10 @@
-import CardRow from "../components/CardRow";
+import { ResourceCardRowComponent } from "../components/ResourceCardRowComponent";
+import { IResourceCard } from "../interfaces/IResourceCard";
 
-const CardContent = [
+const CardContent: Array<IResourceCard> = [
   {
     key: "12345",
-    cardID: "12345",
+    id: "12345",
     colour: "blue",
     value: 2,
     cost: {
@@ -16,7 +17,7 @@ const CardContent = [
   },
   {
     key: "12345",
-    cardID: "15342",
+    id: "15342",
     colour: "blue",
     value: 2,
     cost: {
@@ -29,7 +30,7 @@ const CardContent = [
   },
   {
     key: "12121",
-    cardID: "12121",
+    id: "12121",
     colour: "blue",
     value: 2,
     cost: {
@@ -46,7 +47,7 @@ const ExampleGame = () => {
   return (
     <div>
       <h1>Testing gameplay</h1>
-      <CardRow cards={CardContent} />
+      <ResourceCardRowComponent cards={CardContent} />
     </div>
   );
 };
